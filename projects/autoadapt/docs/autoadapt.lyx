@@ -1,0 +1,94 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass article
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage widemarginsa4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+
+\layout Title
+
+Autoadaptation with real-valued genes
+\layout Author
+
+Marko Grönroos
+\layout Abstract
+
+This document describes a study of autoadaptation with NeHeP evolutinary
+ library.
+ The system evolves a population of individuals with floating-point genes
+ in an environment which changes periodically, so the population has to
+ re-adapt to the new environment.
+ The real-valued genes have their mutation rates encoded in the genotype,
+ so the mutation rates are also evolved.
+\layout Section
+
+Introduction
+\layout Standard
+
+The autoadaptation methods used in this study are based on methods presented
+ by Thomas Bäck.
+\layout Standard
+
+Autoadaptation is useful for two purposes.
+ First, it helps an evolutionary system to find good parameters for itself
+ at different times during evolution.
+ Second, it helps find optimal evolutionary parameters when the environment
+ changes.
+\layout Standard
+
+We use the 
+\noun on 
+NeHeP
+\noun default 
+ evolutionary algorithm library to conduct these tests.
+\layout Section
+
+Description of the system
+\layout Standard
+
+The population is evaluated in an environment subclassed from 
+\family typewriter 
+FloatTestEAEnv
+\family default 
+ environment in 
+\noun on 
+NeHeP
+\noun default 
+ library.
+ The environment provides a generic test bench for evolution by implementing
+ various test functions that are commonly used in research of evolutionary
+ computation.
+\layout Section
+
+Results
+\layout Section
+
+Conclusions
+\layout Standard
+
+The simple autoadaptation scheme proposed by Bäck seems to work well with
+ the used test problems.
+ It helps the evolutionary algorithm to approach optimum very fast.
+ It also helps the evolutionary algorithm to re-adapt its mutation speed
+ parameters to quickly evolve towards a new optimum in a periodically changing
+ environment.
+\the_end

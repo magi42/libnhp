@@ -1,0 +1,139 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass article
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Author
+
+Evolving Solutions for Iterated Prisoners Dilemma
+\layout Author
+
+Marko Grönroos
+\layout Abstract
+
+This artice describes the Prisoners application for NeHeP evolutionary algorithm
+ library.
+ The application evolves a strategy for Iterated Prisoner's Dilemma in a
+ group of various other standard strategies: Co-operating, Defecting, Tit-for-Ta
+t, and random.
+ The prisoners compete one-on-one against every other strategy and have
+ a memory of three previous decisions.
+ An evolved strategy is usually found to yield better results than the Tit-for-T
+at strategy.
+\layout Section
+
+Introduction
+\layout Standard
+
+Prisoner's Dilemma (PD) is a hypothetical situation where two crime partners
+ have been arrested for questioning.
+ If one of the two blames the other (defects him), and the other stays silent
+ (co-operates), the defecting prisoner gets free and the co-operating gets
+ 5 years of prison.
+ If both stay silent, both get 1 year in prison.
+ If both blame the other, both get 3 years.
+\layout Standard
+
+Iterative Prisoner's Dilemma (IPD) is an extended variant of the PD, where
+ each pair of prisoners are questioned for a number of times.
+ Each time the prisoners remember the decisions in three previous times
+ and can act according to those decisions.
+ For example, if the other prisoner defected previously, it is possible
+ to revenge that by defecting now.
+\layout Standard
+
+The problem belongs to game theory, and is relevant for many fields of natural
+ sciences and philosophy, including sociology, economics, biology, ethology,
+ and evolutionary theory.
+\layout Section
+
+Competing strategies
+\layout Standard
+
+
+\emph on 
+Tit-for-tat
+\emph default 
+ strategy means simply co-operating on the first iteration and after that
+ doing what the other prisoner did previously.
+ If the other prisoner had co-operated previously, we trust him to co-operate
+ again, and if he defected previously, we do not trust him to co-operate
+ this time but 
+\begin_inset Quotes eld
+\end_inset 
+
+revenge
+\begin_inset Quotes erd
+\end_inset 
+
+ by defecting.
+ If the other prisoner always co-operates, both will always get only 1 year.
+ If the other prisoner always defects, both always get 3 years.
+ If the other prisoner is also a tit-for-tat strategy, both co-operate.
+ This strategy is very good when competing against other strategies.
+\layout Standard
+
+The real problem is to find an evolutionary strategy that does better, on
+ average, than tit-for-tat strategy.
+\layout Section
+
+Software architecture
+\layout Standard
+
+The following describes the class hierarchy of the application.
+\layout Subsection
+
+PDGame
+\layout Standard
+
+PDGame is a game object that handles playing the game, that is, records
+ decisions from competing strategies, gives the results, and keeps record
+ of the history of the decisions.
+\layout Subsection
+
+PDStrategy
+\layout Standard
+
+PDStrategy is defines an IPD strategy.
+\layout Standard
+
+It is sub-classed by TitForTatPDStrategy, RandomPDStrategy, RandomRulePDStrategy
+, CooperatingPDStrategy, and DefectingPDStrategy.
+\layout Subsection
+
+PrisonerGene
+\layout Subsection
+
+PrisonGAEnv
+\layout Standard
+
+PrisonGAEnv is an evolutionary environment for evolving individuals.
+ It does the actual evaluation of fitnesses by competing the solutions against
+ the other IPD strategies.
+\layout Section
+
+Experiments
+\layout Section
+
+Discussion
+\the_end
